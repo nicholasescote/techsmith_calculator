@@ -9,7 +9,6 @@ class CalculatorModel:
         self.first = 0
         self.second = 0 
         self.operator = ""
-        self.equation = ""
 
     # setter for first number in equation
     def set_first(self, val):
@@ -31,7 +30,7 @@ class CalculatorModel:
     # resets the calculator
     def clear(self):
         self.first = 0
-        self.second = None
+        self.second = 0
         self.operator = ""
 
     # evaluates the function based on the infor passed into the calculator
@@ -57,7 +56,7 @@ class CalculatorModel:
 
         # division operation
         elif self.operator == "/":
-            solution /= self.second
+            solution //= self.second
 
         # clears calculator and sets solution as first value to continue operation
         self.clear()
@@ -65,14 +64,48 @@ class CalculatorModel:
 
         return solution
 
+# test cases
+"""
 def main():
-    print("Hello World")
+    # test cases for addition
     calc = CalculatorModel()
     calc.set_first(1)
     calc.set_second(1)
     calc.set_op("+")
-    print(calc.evaluate()) # expected value 1 
-    print(calc.evaluate()) #expected value 0 because of reset
+    print(calc.evaluate()) # expected value 2
+    print(calc.evaluate()) # expected value 2 becuase maintains state 
+
+    calc.clear()
+    print(calc.evaluate()) # expected value 0
+
+    # test cases for multiplication
+    calc.set_first(10)
+    calc.set_second(5)
+    calc.set_op("*")
+    print(calc.evaluate()) # expected value 50
+
+    calc.clear()
+    print(calc.evaluate()) # expected value 0
+    
+    #test cases for division
+    calc.set_first(99)
+    calc.set_second(3)
+    calc.set_op("/")
+    print(calc.evaluate()) # expected value 33
+
+    calc.clear()
+    print(calc.evaluate()) # expected value 0
+    
+    #test cases for division
+    calc.set_first(150)
+    calc.set_second(51)
+    calc.set_op("-")
+    print(calc.evaluate()) # expected value 99
+
+    #test for continuing operationg
+    calc.set_second(51)
+    calc.set_op("-")
+    print(calc.evaluate()) #expected value 48
 
 
 
@@ -80,3 +113,4 @@ if __name__ == "__main__":
     # execute only if run as a script
     main()
 
+"""
